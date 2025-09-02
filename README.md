@@ -14,7 +14,7 @@ Incluye autenticación de usuarios, navegación entre pantallas y configuración
 ## 🎥 Video demostrativo
 
 
----
+--- https://drive.google.com/file/d/1T_nOYfdefyokw9DhHD0qm07-RtJwQUYY/view?usp=drivesdk 
 
 ## 📂 Estructura del proyecto
 src/
