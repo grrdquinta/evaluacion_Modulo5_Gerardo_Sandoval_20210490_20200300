@@ -185,23 +185,42 @@ const RegisterScreen = ({ navigation }) => {
           </View>
 
           <View style={styles.inputContainer}>
-            <Text style={styles.label}>Especialidad *</Text>
-            <View style={styles.pickerContainer}>
-              <Picker
-                selectedValue={formData.especialidad}
-                onValueChange={(value) => handleInputChange('especialidad', value)}
-                style={styles.picker}
-              >
-                {especialidades.map((item, index) => (
-                  <Picker.Item 
-                    key={index} 
-                    label={item.label} 
-                    value={item.value} 
-                  />
-                ))}
-              </Picker>
-            </View>
-          </View>
+                      <Text style={styles.label}>Especialidad *</Text>
+                      {Platform.OS === 'ios' ? (
+                        <View style={styles.iosPickerContainer}>
+                          <Picker
+                            selectedValue={formData.especialidad}
+                            onValueChange={(value) => handleInputChange('especialidad', value)}
+                            style={styles.iosPicker}
+                            itemStyle={styles.iosPickerItem}
+                          >
+                            {especialidades.map((item, index) => (
+                              <Picker.Item 
+                                key={index} 
+                                label={item.label} 
+                                value={item.value} 
+                              />
+                            ))}
+                          </Picker>
+                        </View>
+                      ) : (
+                        <View style={styles.pickerContainer}>
+                          <Picker
+                            selectedValue={formData.especialidad}
+                            onValueChange={(value) => handleInputChange('especialidad', value)}
+                            style={styles.picker}
+                          >
+                            {especialidades.map((item, index) => (
+                              <Picker.Item 
+                                key={index} 
+                                label={item.label} 
+                                value={item.value} 
+                              />
+                            ))}
+                          </Picker>
+                        </View>
+                      )}
+                    </View>
 
           <TouchableOpacity
             style={[styles.button, loading && styles.buttonDisabled]}
@@ -279,6 +298,24 @@ const styles = StyleSheet.create({
   },
   picker: {
     height: 50,
+  },
+    // Estilos específicos para iOS
+  iosPickerContainer: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    backgroundColor: '#f9f9f9',
+    height: 120, // Altura fija para iOS
+    justifyContent: 'center',
+  },
+  iosPicker: {
+    height: 120,
+    width: '100%',
+  },
+  iosPickerItem: {
+    fontSize: 16,
+    color: '#333',
+    textAlign: 'center',
   },
   button: {
     backgroundColor: '#6200EE',
